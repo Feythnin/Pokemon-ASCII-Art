@@ -40,8 +40,15 @@ catch [System.Net.WebException] {
 $pictureChosen = $sprites.$spritePosition
 
 # Grab the png and store it in the imagePath var
+# If that pokemon doesn't have that sprite position, output error
 
-Invoke-WebRequest -Uri $pictureChosen -OutFile $imagePath
+try {
+    Invoke-WebRequest -Uri $pictureChosen -OutFile $imagePath -ErrorAction Stop
+}
+catch [System.Management.Automation.ParameterBindingException] {
+    Write-Output "Unfortunately, there is no sprite for that position"
+    exit
+}
 
 # Finally, convert the image to Ascii
 
