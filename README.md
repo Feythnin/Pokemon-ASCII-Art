@@ -21,5 +21,5 @@ Sprite Position can only have the following values:
 Should take any valid pokemon that Pokeapi.co has on it.
 Not every pokemon has every sprite.
 
-#WIP!!!
+# WIP!!!
 Cannot stress this enough. This is still being worked on and is mostly just for fun.
