@@ -17,13 +17,13 @@ param(
     [ValidateSet('back_default', 'back_female', 'back_shiny', 'back_shiny_female', 'front_default', 'front_female', 'front_shiny', 'front_shiny_female')]
     [string]$spritePosition,
     [string]$pokemon,
-    $imagePath = "$pokemon.png"
+    $imagePath = "c:\windows\temp\$pokemon.png"
 )
 
 # Install and import needed modules
 
-Install-Module -Name Asciify
-Install-Module -Name Asciify
+Install-Module -Name Asciify -scope CurrentUser
+Import-Module -Name Asciify
 
 # Since the list of pokemon is too long to fit in an array (go on, try it, I dare you), this will get the webpage and return an error if invalid pokemon
 
