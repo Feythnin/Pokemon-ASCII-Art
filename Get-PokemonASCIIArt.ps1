@@ -12,13 +12,38 @@
 # spritePosition only takes a specific input and that was put into a validateset
 # Pokemon is a string that needs to have a valid pokemon name entered
 
+<#
+.SYNOPSIS
+    Takes the entered pokemon and sprite position and outputs an ASCII version of that sprite.
+
+.DESCRIPTION
+    Starts off by finding the pokemon entered in the PokeAPI database. Also takes the sprite position that you want to output.
+    If the pokemon doesn't exist, it will output as such.
+    If the sprite position chosen does not exist for the pokemon, it will output that as well.
+    If everything matches correctly, the sprite will output as an ASCII picture.
+
+.PARAMETER pokemon
+    Takes any valid pokemon, ie. Bulbasaur. A list of pokemon can be found on Bulbapedia.com. 
+
+.PARAMETER spritePosition
+    Takes the following strings: back_default, back_female, front_default, front_female
+
+.EXAMPLE
+    Get-PokemonASCIIArt.ps1 -pokemon Bulbasaur -spritePosition front_female
+
+    Does something. Have as many examples as you think useful.
+#>
+
+
 param(
-    [Parameter()]
-    [ValidateSet('back_default', 'back_female', 'back_shiny', 'back_shiny_female', 'front_default', 'front_female', 'front_shiny', 'front_shiny_female')]
+    [Parameter(mandatory = $true)]
+    [ValidateSet('back_default', 'back_female', 'front_default', 'front_female')]
     [string]$spritePosition,
-    [string]$pokemon,
-    $imagePath = "c:\windows\temp\$pokemon.png"
+    [Parameter(mandatory = $true)]
+    [string]$pokemon
 )
+
+$imagePath = "c:\windows\temp\$pokemon.png"
 
 # Install and import needed modules
 
